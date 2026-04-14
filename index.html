@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚡ Elemental Power Arena</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/battle.css" />
+  <link rel="stylesheet" href="css/gacha.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+
+  <div class="game-wrap">
+
+    <!-- ══════════════════ MAIN MENU ══════════════════ -->
+    <div id="screen-menu" class="screen active">
+      <div class="main-menu">
+        <div class="game-title">⚡ Elemental Power Arena</div>
+        <div class="game-subtitle">Kuasai elemen. Kalahkan musuh. Raih puncak.</div>
+      </div>
+      <div class="player-bar">
+        <div class="player-info">
+          <div class="avatar" id="menu-avatar">🔥</div>
+          <div>
+            <div class="player-name">Pemain 1</div>
+            <div class="player-rank">Level 7 · Gold III</div>
+          </div>
+        </div>
+        <div class="rank-badge">🥇 GOLD</div>
+      </div>
+      <div class="menu-grid">
+        <button class="menu-btn" onclick="showScreen('screen-mode')">
+          <span class="btn-icon">⚔️</span>
+          Mulai Battle
+          <span class="btn-sub">Pilih mode & lawan</span>
+        </button>
+        <button class="menu-btn" onclick="showScreen('screen-gacha')">
+          <span class="btn-icon">🎰</span>
+          Gacha Spin
+          <span class="btn-sub">Dapatkan skill & elemen</span>
+        </button>
+        <button class="menu-btn" onclick="showScreen('screen-profile')">
+          <span class="btn-icon">🧍</span>
+          Profil
+          <span class="btn-sub">Progress & koleksi</span>
+        </button>
+        <button class="menu-btn" onclick="showScreen('screen-leaderboard')">
+          <span class="btn-icon">🏆</span>
+          Leaderboard
+          <span class="btn-sub">Top pemain global</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════════════ MODE SELECT ══════════════════ -->
+    <div id="screen-mode" class="screen">
+      <button class="back-btn" onclick="showScreen('screen-menu')">← Kembali</button>
+      <div class="section-title">Pilih Mode Battle</div>
+      <div class="section-sub">Setiap mode punya aturan dan reward berbeda</div>
+      <div class="modes-grid" id="mode-grid">
+        <div class="mode-card selected" onclick="selectMode(this,'1v1 Duel')">
+          <div class="mode-icon">⚔️</div>
+          <div class="mode-name">1v1 Duel</div>
+          <div class="mode-sub">Duel cepat 1 lawan 1</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'3v3 Team')">
+          <div class="mode-icon">👥</div>
+          <div class="mode-name">3v3 Team</div>
+          <div class="mode-sub">Kerjasama tim</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'Ranked')">
+          <div class="mode-icon">🏆</div>
+          <div class="mode-name">Ranked</div>
+          <div class="mode-sub">Naikkan rank kamu</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'Battle Royale')">
+          <div class="mode-icon">🌀</div>
+          <div class="mode-name">Battle Royale</div>
+          <div class="mode-sub">Last man standing</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'King of the Hill')">
+          <div class="mode-icon">👑</div>
+          <div class="mode-name">King of Hill</div>
+          <div class="mode-sub">Kuasai zona</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'Chaos Mode')">
+          <div class="mode-icon">🌪️</div>
+          <div class="mode-name">Chaos Mode</div>
+          <div class="mode-sub">Tanpa cooldown!</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'One Hit')">
+          <div class="mode-icon">💀</div>
+          <div class="mode-name">One Hit</div>
+          <div class="mode-sub">Sekali kena langsung kalah</div>
+        </div>
+        <div class="mode-card" onclick="selectMode(this,'Mirror Mode')">
+          <div class="mode-icon">🪞</div>
+          <div class="mode-name">Mirror Mode</div>
+          <div class="mode-sub">Semua skill sama</div>
+        </div>
+      </div>
+
+      <div class="section-title">Pilih Elemen</div>
+      <div class="section-sub">Elemen menentukan skill & gaya bermainmu</div>
+      <div class="elements-grid" id="elem-grid-select">
+        <div class="element-card fire selected" onclick="selectElem(this,'fire','🔥','Fire')">
+          <span class="elem-icon">🔥</span>
+          <div class="elem-name">Fire</div>
+          <div class="elem-type">Damage / AoE</div>
+          <div class="elem-adv">Kuat vs Earth</div>
+        </div>
+        <div class="element-card water" onclick="selectElem(this,'water','💧','Water')">
+          <span class="elem-icon">💧</span>
+          <div class="elem-name">Water</div>
+          <div class="elem-type">Heal / Control</div>
+          <div class="elem-adv">Kuat vs Fire</div>
+        </div>
+        <div class="element-card lightning" onclick="selectElem(this,'lightning','⚡','Lightning')">
+          <span class="elem-icon">⚡</span>
+          <div class="elem-name">Lightning</div>
+          <div class="elem-type">Speed / Combo</div>
+          <div class="elem-adv">Kuat vs Water</div>
+        </div>
+        <div class="element-card earth" onclick="selectElem(this,'earth','🌱','Earth')">
+          <span class="elem-icon">🌱</span>
+          <div class="elem-name">Earth</div>
+          <div class="elem-type">Defense / CC</div>
+          <div class="elem-adv">Kuat vs Lightning</div>
+        </div>
+      </div>
+
+      <div class="secret-title">Elemen Rahasia (Unlock via Gacha)</div>
+      <div class="secret-row" id="secret-elems">
+        <div class="secret-pill" id="pill-ice" onclick="selectSecretElem('❄️','Ice','ice')">❄️ Ice</div>
+        <div class="secret-pill locked-el" id="pill-shadow">🌑 Shadow <span class="lock-txt">(locked)</span></div>
+        <div class="secret-pill locked-el" id="pill-light">☀️ Light <span class="lock-txt">(locked)</span></div>
+        <div class="secret-pill locked-el" id="pill-poison">☣️ Poison <span class="lock-txt">(locked)</span></div>
+        <div class="secret-pill locked-el" id="pill-cosmic">🌌 Cosmic <span class="lock-txt">(locked)</span></div>
+      </div>
+
+      <div class="counter-hint">
+        <b>Counter:</b> Fire &gt; Earth &gt; Lightning &gt; Water &gt; Fire · Ice &gt; Water
+      </div>
+
+      <button class="big-btn primary-btn" onclick="startBattle()">⚔️ Mulai Battle!</button>
+    </div>
+
+    <!-- ══════════════════ BATTLE ══════════════════ -->
+    <div id="screen-battle" class="screen">
+      <div class="battle-header">
+        <span class="battle-mode-badge" id="battle-mode-label">⚔️ 1v1 DUEL</span>
+        <span class="turn-info" id="turn-info">Giliran kamu</span>
+        <span class="round-info" id="battle-round">Ronde 1</span>
+      </div>
+
+      <div id="battle-alert" class="alert-msg"></div>
+
+      <div class="fighters">
+        <div class="fighter-card" id="player-card">
+          <div class="fighter-top">
+            <div>
+              <div class="fighter-name">Kamu</div>
+              <div class="fighter-elem-name" id="player-elem-name">Fire</div>
+            </div>
+            <div class="fighter-elem" id="player-elem-icon">🔥</div>
+          </div>
+          <div class="bar-label">HP <span id="player-hp-val">100</span>/100</div>
+          <div class="hp-bar"><div class="hp-fill player" id="player-hp-bar" style="width:100%"></div></div>
+          <div class="bar-label">Mana <span id="player-mana-val">60</span>/100</div>
+          <div class="mana-bar"><div class="mana-fill" id="player-mana-bar" style="width:60%"></div></div>
+          <div class="status-effects" id="player-status"></div>
+        </div>
+
+        <div class="fighter-card enemy">
+          <div class="fighter-top">
+            <div>
+              <div class="fighter-name">Musuh Bot</div>
+              <div class="fighter-elem-name" id="enemy-elem-name">Water</div>
+            </div>
+            <div class="fighter-elem" id="enemy-elem-icon">💧</div>
+          </div>
+          <div class="bar-label">HP <span id="enemy-hp-val">100</span>/100</div>
+          <div class="hp-bar"><div class="hp-fill enemy" id="enemy-hp-bar" style="width:100%"></div></div>
+          <div class="bar-label">Mana <span id="enemy-mana-val">60</span>/100</div>
+          <div class="mana-bar"><div class="mana-fill" id="enemy-mana-bar" style="width:60%"></div></div>
+          <div class="status-effects" id="enemy-status"></div>
+        </div>
+      </div>
+
+      <div class="combo-bar">
+        <span class="combo-count" id="combo-num">0</span>
+        <span class="combo-label"> Combo</span>
+        <span class="combo-bonus" id="combo-bonus"></span>
+      </div>
+
+      <div class="battle-log" id="battle-log">
+        <div class="log-entry">Battle dimulai! Gunakan skill untuk menyerang.</div>
+      </div>
+
+      <div class="skills-area">
+        <div class="skills-title">Skills</div>
+        <div class="skills-grid" id="skills-grid"></div>
+      </div>
+
+      <div class="action-btns">
+        <button class="action-btn" onclick="doAction('dodge')">🌀 Dodge</button>
+        <button class="action-btn" onclick="doAction('basic')">👊 Basic Attack</button>
+        <button class="action-btn danger" onclick="showScreen('screen-menu')">✗ Keluar</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════ GACHA ══════════════════ -->
+    <div id="screen-gacha" class="screen">
+      <button class="back-btn" onclick="showScreen('screen-menu')">← Kembali</button>
+      <div class="section-title">🎰 Gacha Spin</div>
+      <div class="section-sub">Dapatkan elemen rahasia, skill, dan passive langka!</div>
+
+      <div class="gacha-pity">
+        Pity: <strong id="pity-count">0</strong>/80 spin
+        <span class="pity-hint">(Epic tiap 10 · Legendary tiap 80)</span>
+      </div>
+      <div class="pity-bar"><div class="pity-fill" id="pity-bar" style="width:0%"></div></div>
+
+      <div class="spin-area" id="spin-area">
+        <span class="spin-placeholder-icon">🎲</span>
+        <span class="spin-placeholder-txt">Tekan spin untuk memulai!</span>
+      </div>
+
+      <div class="gacha-btns">
+        <button class="gacha-btn" onclick="doSpin(1)">
+          🎲 Spin x1<br><span class="gacha-cost">100 Token</span>
+        </button>
+        <button class="gacha-btn premium" onclick="doSpin(10)">
+          ✨ Spin x10<br><span class="gacha-cost">900 Token (Hemat!)</span>
+        </button>
+      </div>
+
+      <div class="tokens-info">Token kamu: <strong id="token-count">1200</strong> 🔮</div>
+
+      <div class="gacha-history-title">Riwayat Gacha</div>
+      <div id="gacha-history" class="gacha-history-list"></div>
+    </div>
+
+    <!-- ══════════════════ PROFILE ══════════════════ -->
+    <div id="screen-profile" class="screen">
+      <button class="back-btn" onclick="showScreen('screen-menu')">← Kembali</button>
+      <div class="profile-header">
+        <div class="profile-avatar" id="profile-avatar">🔥</div>
+        <div class="profile-details">
+          <div class="profile-name">Pemain 1</div>
+          <div class="profile-sub">Level 7 · Gold III · 1,240 pts</div>
+          <div class="exp-bar"><div class="exp-fill" style="width:68%"></div></div>
+          <div class="exp-text">EXP: 680/1000</div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val" id="stat-wins">42</div><div class="stat-lbl">Wins</div></div>
+        <div class="stat-card"><div class="stat-val" id="stat-losses">18</div><div class="stat-lbl">Losses</div></div>
+        <div class="stat-card"><div class="stat-val" id="stat-wr">70%</div><div class="stat-lbl">Win Rate</div></div>
+      </div>
+
+      <div class="collection-title">Koleksi Elemen (5/9)</div>
+      <div class="collection-grid">
+        <div class="coll-item owned" title="Fire">🔥</div>
+        <div class="coll-item owned" title="Water">💧</div>
+        <div class="coll-item owned" title="Lightning">⚡</div>
+        <div class="coll-item owned" title="Earth">🌱</div>
+        <div class="coll-item owned" title="Ice">❄️</div>
+        <div class="coll-item locked-c" title="Shadow">🌑</div>
+        <div class="coll-item locked-c" title="Light">☀️</div>
+        <div class="coll-item locked-c" title="Poison">☣️</div>
+        <div class="coll-item locked-c" title="Cosmic">🌌</div>
+      </div>
+
+      <div class="quest-title">Daily Quest</div>
+      <div class="quest-item">
+        <div>
+          <div class="quest-name">Menangkan 3 Duel</div>
+          <div class="quest-prog">Progress: 2/3</div>
+        </div>
+        <div class="quest-reward">+200 Token</div>
+      </div>
+      <div class="quest-item">
+        <div>
+          <div class="quest-name">Gunakan Ultimate 5x</div>
+          <div class="quest-prog">Progress: 3/5</div>
+        </div>
+        <div class="quest-reward">+150 Token</div>
+      </div>
+      <div class="quest-item">
+        <div>
+          <div class="quest-name">Capai Combo 10x</div>
+          <div class="quest-prog">Progress: 7/10</div>
+        </div>
+        <div class="quest-reward">+300 Token</div>
+      </div>
+
+      <div class="quest-title" style="margin-top:14px">Rank System</div>
+      <div class="rank-list" id="rank-list"></div>
+    </div>
+
+    <!-- ══════════════════ LEADERBOARD ══════════════════ -->
+    <div id="screen-leaderboard" class="screen">
+      <button class="back-btn" onclick="showScreen('screen-menu')">← Kembali</button>
+      <div class="section-title">🏆 Leaderboard Global</div>
+      <div class="section-sub">Season 4 · Reset dalam 12 hari</div>
+      <div id="lb-list"></div>
+    </div>
+
+    <!-- ══════════════════ BOTTOM NAV ══════════════════ -->
+    <div class="bottom-nav">
+      <button class="nav-btn active" id="nav-menu"   onclick="showScreen('screen-menu');setNav('nav-menu')"><span class="nav-icon">🏠</span>Menu</button>
+      <button class="nav-btn" id="nav-mode"           onclick="showScreen('screen-mode');setNav('nav-mode')"><span class="nav-icon">⚔️</span>Battle</button>
+      <button class="nav-btn" id="nav-gacha"          onclick="showScreen('screen-gacha');setNav('nav-gacha')"><span class="nav-icon">🎰</span>Gacha</button>
+      <button class="nav-btn" id="nav-profile"        onclick="showScreen('screen-profile');setNav('nav-profile')"><span class="nav-icon">🧍</span>Profil</button>
+      <button class="nav-btn" id="nav-lb"             onclick="showScreen('screen-leaderboard');setNav('nav-lb')"><span class="nav-icon">🏆</span>Rank</button>
+    </div>
+
+  </div><!-- /.game-wrap -->
+
+  <!-- JavaScript modules -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/gacha.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

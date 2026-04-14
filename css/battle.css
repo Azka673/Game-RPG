@@ -1,0 +1,187 @@
+/* ─── BATTLE SCREEN ─────────────────────────────────────────── */
+
+.battle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg2);
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border);
+  margin-bottom: 10px;
+}
+.battle-mode-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #FCEBEB;
+  color: #501313;
+  font-weight: 600;
+}
+.turn-info { font-size: 12px; color: var(--text2); }
+.round-info { font-size: 12px; color: var(--text3); }
+
+/* ─── FIGHTERS ──────────────────────────────────────────────── */
+.fighters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.fighter-card {
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  border: 0.5px solid var(--border);
+  background: var(--bg2);
+}
+.fighter-card.enemy { background: var(--bg3); }
+.fighter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.fighter-name { font-size: 13px; font-weight: 500; }
+.fighter-elem-name { font-size: 11px; color: var(--text2); }
+.fighter-elem { font-size: 22px; }
+
+/* ─── BARS ──────────────────────────────────────────────────── */
+.bar-label { font-size: 10px; color: var(--text2); margin-bottom: 3px; }
+
+.hp-bar {
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+.hp-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+.hp-fill.player  { background: #1D9E75; }
+.hp-fill.enemy   { background: #D85A30; }
+
+.mana-bar {
+  height: 5px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.mana-fill {
+  height: 100%;
+  background: #378ADD;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ─── STATUS EFFECTS ────────────────────────────────────────── */
+.status-effects { display: flex; gap: 4px; flex-wrap: wrap; min-height: 20px; }
+.status-tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 0.5px solid;
+  font-weight: 500;
+}
+.status-tag.burn   { background:#FAECE7; color:#993C1D; border-color:#F0997B; }
+.status-tag.stun   { background:#FAEEDA; color:#854F0B; border-color:#EF9F27; }
+.status-tag.freeze { background:#E6F1FB; color:#0C447C; border-color:#85B7EB; }
+.status-tag.shield { background:#EAF3DE; color:#3B6D11; border-color:#97C459; }
+.status-tag.poison { background:#EAF3DE; color:#3B6D11; border-color:#639922; }
+
+/* ─── COMBO BAR ─────────────────────────────────────────────── */
+.combo-bar {
+  text-align: center;
+  padding: 7px;
+  background: var(--bg2);
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border);
+  margin-bottom: 8px;
+}
+.combo-count { font-size: 24px; font-weight: 600; }
+.combo-label { font-size: 13px; color: var(--text2); }
+.combo-bonus { font-size: 11px; color: var(--warn); margin-left: 8px; }
+
+/* ─── BATTLE LOG ────────────────────────────────────────────── */
+.battle-log {
+  background: var(--bg3);
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border);
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  min-height: 64px;
+  max-height: 90px;
+  overflow-y: auto;
+}
+.log-entry { font-size: 12px; color: var(--text2); padding: 1px 0; line-height: 1.5; }
+.log-entry.highlight { color: var(--text); font-weight: 500; }
+.log-entry.dmg   { color: #D85A30; }
+.log-entry.heal  { color: #1D9E75; }
+.log-entry.combo { color: #BA7517; font-weight: 500; }
+
+/* ─── SKILLS ────────────────────────────────────────────────── */
+.skills-area { margin-bottom: 10px; }
+.skills-title { font-size: 11px; color: var(--text2); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.skill-btn {
+  padding: 10px 6px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border);
+  background: var(--bg2);
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  transition: all 0.15s;
+  position: relative;
+  user-select: none;
+}
+.skill-btn:hover:not(.cooldown):not(.no-mana) {
+  background: var(--bg3);
+  border-color: var(--border2);
+}
+.skill-btn.cooldown  { opacity: 0.4; cursor: default; }
+.skill-btn.no-mana   { opacity: 0.5; cursor: default; }
+.skill-btn.ultimate  { border-color: #7F77DD; background: #EEEDFE; }
+.skill-icon    { font-size: 22px; display: block; margin-bottom: 2px; }
+.skill-name-s  { font-size: 10px; font-weight: 500; display: block; }
+.skill-cd      { font-size: 9px; color: var(--text2); display: block; }
+.skill-cost    { font-size: 9px; color: #185FA5; display: block; }
+.cd-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.14);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ─── ACTION BUTTONS ────────────────────────────────────────── */
+.action-btns { display: flex; gap: 8px; margin-bottom: 10px; }
+.action-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border2);
+  background: var(--bg2);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.15s;
+}
+.action-btn:hover { background: var(--bg3); }
+.action-btn.danger {
+  border-color: #F0997B;
+  color: #993C1D;
+  background: #FAECE7;
+}
+.action-btn.danger:hover { background: #F5C4B3; }

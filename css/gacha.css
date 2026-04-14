@@ -1,0 +1,110 @@
+/* ─── GACHA SCREEN ──────────────────────────────────────────── */
+
+.gacha-pity {
+  font-size: 12px;
+  color: var(--text2);
+  margin-bottom: 5px;
+}
+.pity-hint { font-size: 11px; color: var(--text3); }
+
+.pity-bar {
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.pity-fill {
+  height: 100%;
+  background: #7F77DD;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ─── SPIN AREA ─────────────────────────────────────────────── */
+.spin-area {
+  min-height: 150px;
+  border: 0.5px dashed var(--border2);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 20px;
+  margin-bottom: 14px;
+  background: var(--bg2);
+  transition: background 0.3s;
+}
+.spin-placeholder-icon { font-size: 52px; display: block; margin-bottom: 8px; }
+.spin-placeholder-txt { font-size: 14px; color: var(--text2); }
+.spin-icon { font-size: 56px; display: block; margin-bottom: 8px; }
+.spin-name { font-size: 17px; font-weight: 600; }
+.spin-desc { font-size: 12px; color: var(--text2); margin-top: 4px; }
+
+/* ─── RARITY BADGES ─────────────────────────────────────────── */
+.rarity-badge {
+  display: inline-block;
+  padding: 3px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rarity-common    { background: #D3D1C7; color: #2C2C2A; }
+.rarity-rare      { background: #B5D4F4; color: #042C53; }
+.rarity-epic      { background: #CECBF6; color: #26215C; }
+.rarity-legendary { background: #FAC775; color: #412402; }
+.rarity-mythic    { background: #F4C0D1; color: #4B1528; }
+
+/* ─── GACHA BUTTONS ─────────────────────────────────────────── */
+.gacha-btns {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.gacha-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border2);
+  background: var(--bg2);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  transition: all 0.15s;
+  line-height: 1.5;
+}
+.gacha-btn:hover { background: var(--bg3); }
+.gacha-btn.premium {
+  background: #EEEDFE;
+  border-color: #AFA9EC;
+  color: #3C3489;
+}
+.gacha-btn.premium:hover { background: #CECBF6; }
+.gacha-cost { font-size: 11px; opacity: 0.7; }
+
+.tokens-info { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
+
+/* ─── GACHA HISTORY ─────────────────────────────────────────── */
+.gacha-history-title {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.gacha-history-list {
+  max-height: 160px;
+  overflow-y: auto;
+}
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.history-row:last-child { border-bottom: none; }
+.history-icon { font-size: 16px; }
+.history-name { flex: 1; font-size: 12px; }
